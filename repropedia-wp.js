@@ -1,5 +1,5 @@
 /*
- * Drupal6 Repropedia Tooltip Loader
+ * Wordpress Repropedia Tooltip Loader
  *
  * Written for Northwestern University by gmazin (github.com/gmazin)
  *
@@ -16,7 +16,7 @@
         link.id   = cssId;
         link.rel  = 'stylesheet';
         link.type = 'text/css';
-        link.href = '//www.repropedia.org/sites/repropedia/clients/css/repropedia.css';
+        link.href = 'https://raw.github.com/nuamps/RepropediaJS/master/css/repropedia.css';
         link.media = 'all';
         head.appendChild(link);
     }
@@ -27,15 +27,31 @@
         var link  = $.createElement('script');
         link.id   = jsId;
         link.type = 'text/javascript';
-        link.addEventListener("load",function(){
-          Repropedia.init({
-            'CONSUMER_KEY' : 'your_oauth_key_here',
-            'regions' : ['.content p']
-          });
-        })
-        link.src = '//www.repropedia.org/sites/repropedia/clients/js/repropedia.js';
+        link.src = 'https://raw.github.com/nuamps/RepropediaJS/master/js/repropedia.js';
         head.appendChild(link);
     }
 
     });
 })(jQuery);
+
+function addLoadEvent(func) { 
+      var oldonload = window.onload; 
+      if (typeof window.onload != 'function') { 
+        window.onload = func; 
+      } else { 
+        window.onload = function() { 
+          if (oldonload) { 
+            oldonload(); 
+          } 
+          func(); 
+        } 
+    } 
+} 
+
+addLoadEvent( function() {
+    Repropedia.init({
+        'CONSUMER_KEY' : 'YOUR_OAUTH_KEY_HERE',
+        'field_css_class' : 'post-data',
+        'regions' : [':not(wp-admin) .post-data']
+    }); 
+});
