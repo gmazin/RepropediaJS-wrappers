@@ -1,0 +1,48 @@
+<?php
+/**
+ * @file
+ * Module file for repropedia_tooltip.
+ */
+
+/**
+ * Author: Rodolfo B Vieira - rodolfo at northwestern dot edu
+ * Date  : March 2012
+ *
+ * @defgroup repropedia_tooltip
+ * @ingroup services
+ * @{
+ * Filters CCK fields by wrapping them in a CSS class. The class is then 
+ * used as a target for scanning known repropeida terms. Each term is then 
+ * tagged with another css_class that listens to user events, and displays
+ * a tooltip, while fetching the definition via AJAX call.
+ * 
+ */
+
+//$cwd = getcwd();
+
+/**
+ *
+ * Export SETTINGS to js
+ */
+function repropedia_tooltip_init() {
+
+  // D6 Load external JS files
+  $js_files = array(
+    'js/jquery.tools.min.js',
+    'js/repropedia-d6.js',
+    'js/log4js.js'
+  );
+  $module_path = drupal_get_path('module','repropedia_tooltip');
+  foreach($js_files as $js_file) {
+    drupal_add_js($module_path . '/' . $js_file, 'module');
+  }
+
+  //drupal_add_css($module_path . '/' . 'css/repropedia.css', 'module');
+  // pass SETTINGS to js Drupal.settings.RepropediaTooltip
+}
+
+
+
+/**
+ * @} End of "defgroup repropedia_tooltip".
+ */

@@ -1,0 +1,14 @@
+name = Repropedia Tooltip Beta
+description = A CCK field text filter to tags known terms from Repropedia, and then uses jQuery to fetch their definition on the client side. It works as decoration, doesn't change the original input. Updated 10/13
+package = Repropedia Tooltip Beta
+core = 6.x
+
+
+scripts[]=js/jquery.tools.min.js
+scripts[]=js/repropedia-d6.js
+scripts[]=js/log4js.js
+
+
+; NOTE:
+; Drupal seems to ignore both CSS and JS loading from here. 
+; JS+CSS is being loaded from the .module file.
